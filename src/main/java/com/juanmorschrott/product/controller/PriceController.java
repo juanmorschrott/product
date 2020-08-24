@@ -22,9 +22,7 @@ public class PriceController {
 
     @PostMapping
     public ResponseEntity<PriceResponseDto> checkOffer(@RequestBody PriceRequestDto priceRequestDto) {
-        PriceResponseDto priceResponseDto = this.priceService.checkOffer(priceRequestDto);
-
-        return new ResponseEntity(priceResponseDto, HttpStatus.OK);
+        return new ResponseEntity(this.priceService.checkOffer(priceRequestDto), HttpStatus.OK);
     }
 
     @GetMapping

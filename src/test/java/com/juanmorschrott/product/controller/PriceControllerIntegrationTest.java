@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -32,11 +31,6 @@ public class PriceControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    @Before
-    public void init() {
-
-    }
 
     @Test
     public void test1() throws Exception {
