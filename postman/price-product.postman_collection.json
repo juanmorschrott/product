@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "POST Check offer",
+			"name": "GET Check offer",
 			"request": {
 				"method": "GET",
 				"header": [

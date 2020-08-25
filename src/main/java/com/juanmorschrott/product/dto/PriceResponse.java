@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Builder
 @Data
-public class PriceResponseDto {
+public class PriceResponse {
 
     @NotNull
     private Long productId;

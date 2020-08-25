@@ -1,6 +1,6 @@
 package com.juanmorschrott.product.service;
 
-import com.juanmorschrott.product.dto.PriceResponseDto;
+import com.juanmorschrott.product.dto.PriceResponse;
 import com.juanmorschrott.product.exception.NotFoundException;
 import com.juanmorschrott.product.model.Price;
 import com.juanmorschrott.product.repository.PriceRepository;
@@ -22,7 +22,7 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
-    public PriceResponseDto search(LocalDateTime applyDate, Long productId, Long brandId) {
+    public PriceResponse search(LocalDateTime applyDate, Long productId, Long brandId) {
         Price price = this.priceRepository.findAll().stream()
                 .filter(p -> p.getProductId().equals(productId))
                 .filter(p -> p.getBrandId().equals(brandId))
@@ -31,7 +31,7 @@ public class PriceServiceImpl implements PriceService {
                 .orElseThrow(() -> new NotFoundException("No product found with criteria -> DateTime: " + applyDate +
                         " Product Id: " + productId + " Brand Id: " + brandId));
 
-        return PriceResponseDto.builder()
+        return PriceResponse.builder()
                 .productId(price.getProductId())
                 .brandId(price.getBrandId())
                 .period(generatePeriodStr(price.getStartDate(), price.getEndDate()))

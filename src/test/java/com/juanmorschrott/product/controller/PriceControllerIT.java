@@ -1,8 +1,9 @@
 package com.juanmorschrott.product.controller;
 
-import com.juanmorschrott.product.dto.PriceResponseDto;
-import org.junit.Before;
+import com.juanmorschrott.product.ProductApplication;
+import com.juanmorschrott.product.dto.PriceResponse;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,9 +20,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {ProductApplication.class, PriceControllerImpl.class})
 @AutoConfigureMockMvc
-public class PriceControllerIntegrationTest {
+public class PriceControllerIT {
 
     @LocalServerPort
     private int port;
@@ -29,32 +30,29 @@ public class PriceControllerIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private String url;
-
-    @Before
-    public void init() {
-        url = "http://localhost:" + port + "/api/v1/prices/search";
-    }
+    private String path;
 
     @Test
     public void test1() throws Exception {
         // Given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+                .scheme("http")
+                .host("localhost")
+                .port(port)
                 .queryParam("date", "2020-06-14-10.00.00")
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
-
         // When
-        ResponseEntity<PriceResponseDto> response = restTemplate.exchange(
+        ResponseEntity<PriceResponse> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
-                PriceResponseDto.class);
+                PriceResponse.class);
 
         // Then
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
@@ -71,7 +69,10 @@ public class PriceControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+                .scheme("http")
+                .host("localhost")
+                .port(port)
                 .queryParam("date", "2020-06-14-16.00.00")
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
@@ -79,11 +80,11 @@ public class PriceControllerIntegrationTest {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
-        ResponseEntity<PriceResponseDto> response = restTemplate.exchange(
+        ResponseEntity<PriceResponse> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
-                PriceResponseDto.class);
+                PriceResponse.class);
 
         // Then
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
@@ -100,7 +101,10 @@ public class PriceControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+                .scheme("http")
+                .host("localhost")
+                .port(port)
                 .queryParam("date", "2020-06-14-21.00.00")
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
@@ -108,11 +112,11 @@ public class PriceControllerIntegrationTest {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
-        ResponseEntity<PriceResponseDto> response = restTemplate.exchange(
+        ResponseEntity<PriceResponse> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
-                PriceResponseDto.class);
+                PriceResponse.class);
 
         // Then
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
@@ -129,7 +133,10 @@ public class PriceControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+                .scheme("http")
+                .host("localhost")
+                .port(port)
                 .queryParam("date", "2020-06-15-10.00.00")
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
@@ -137,11 +144,11 @@ public class PriceControllerIntegrationTest {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
-        ResponseEntity<PriceResponseDto> response = restTemplate.exchange(
+        ResponseEntity<PriceResponse> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
-                PriceResponseDto.class);
+                PriceResponse.class);
 
         // Then
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
@@ -158,7 +165,10 @@ public class PriceControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+                .scheme("http")
+                .host("localhost")
+                .port(port)
                 .queryParam("date", "2020-06-16-21.00.00")
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
@@ -166,11 +176,11 @@ public class PriceControllerIntegrationTest {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
-        ResponseEntity<PriceResponseDto> response = restTemplate.exchange(
+        ResponseEntity<PriceResponse> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
-                PriceResponseDto.class);
+                PriceResponse.class);
 
         // Then
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));

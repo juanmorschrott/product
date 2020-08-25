@@ -1,11 +1,11 @@
 package com.juanmorschrott.product.service;
 
-import com.juanmorschrott.product.dto.PriceResponseDto;
+import com.juanmorschrott.product.dto.PriceResponse;
 
 import java.time.LocalDateTime;
 
 public interface PriceService {
 
-    PriceResponseDto search(LocalDateTime applyDate, Long productId, Long brandId);
+    PriceResponse search(LocalDateTime applyDate, Long productId, Long brandId);
 
 }

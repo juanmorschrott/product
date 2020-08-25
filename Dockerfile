@@ -1,13 +1,12 @@
+FROM maven as builder
+COPY . /usr/src/app
+WORKDIR /usr/src/app
+RUN mvn clean package
+
 FROM openjdk:8-alpine
+COPY --from=builder /usr/src/app/target/*.jar /app/kairosds-app.jar
+WORKDIR /app
+CMD ["java", "-jar", "kairosds-app.jar"]
 
-RUN apk add maven
-
-WORKDIR /product
-
-COPY . .
-
-RUN mvn clean install
-
-EXPOSE 8080
-
-ENTRYPOINT ["mvn", "spring-boot:run"]
+RUN groupadd -r kairosds && useradd --no-log-init -r -g kairosds kairosds
+USER kairosds

@@ -1,6 +1,6 @@
 package com.juanmorschrott.product.service;
 
-import com.juanmorschrott.product.dto.PriceResponseDto;
+import com.juanmorschrott.product.dto.PriceResponse;
 import com.juanmorschrott.product.exception.NotFoundException;
 import com.juanmorschrott.product.model.Price;
 import com.juanmorschrott.product.repository.PriceRepository;
@@ -44,10 +44,10 @@ public class PriceServiceTest {
         LocalDateTime applyDate = LocalDateTime.parse(date, dateTimeFormatter);
 
         // When
-        PriceResponseDto priceResponseDto = priceService.search(applyDate, 35455L, 1L);
+        PriceResponse priceResponse = priceService.search(applyDate, 35455L, 1L);
 
         // Then
-        assertThat(priceResponseDto).isNotNull();
+        assertThat(priceResponse).isNotNull();
     }
 
     @Test
@@ -57,10 +57,10 @@ public class PriceServiceTest {
 
         Price price1 = new Price();
         price1.setBrandId(1L);
-        String price1Date1 = "2020-06-14-00.00.00";
-        String price1Date2 = "2020-12-31-23.59.59";
-        price1.setStartDate(LocalDateTime.parse(price1Date1, dateTimeFormatter));
-        price1.setEndDate(LocalDateTime.parse(price1Date2, dateTimeFormatter));
+        String firstPriceStartDate = "2020-06-14-00.00.00";
+        String firstPriceEndDate = "2020-12-31-23.59.59";
+        price1.setStartDate(LocalDateTime.parse(firstPriceStartDate, dateTimeFormatter));
+        price1.setEndDate(LocalDateTime.parse(firstPriceEndDate, dateTimeFormatter));
         price1.setPriceList(1L);
         price1.setProductId(35455L);
         price1.setPriority(0);
@@ -69,10 +69,10 @@ public class PriceServiceTest {
 
         Price price2 = new Price();
         price2.setBrandId(1L);
-        String price2Date1 = "2020-06-14-15.00.00";
-        String price2Date2 = "2020-06-14-18.30.00";
-        price2.setStartDate(LocalDateTime.parse(price2Date1, dateTimeFormatter));
-        price2.setEndDate(LocalDateTime.parse(price2Date1, dateTimeFormatter));
+        String secondPriceStartDate = "2020-06-14-15.00.00";
+        String secondPriceEndDate = "2020-06-14-18.30.00";
+        price2.setStartDate(LocalDateTime.parse(secondPriceStartDate, dateTimeFormatter));
+        price2.setEndDate(LocalDateTime.parse(secondPriceEndDate, dateTimeFormatter));
         price2.setPriceList(2L);
         price2.setProductId(35455L);
         price2.setPriority(1);
@@ -83,10 +83,10 @@ public class PriceServiceTest {
 
         // When
         when(priceRepository.findAll()).thenReturn(Arrays.asList(price1, price2));
-        PriceResponseDto priceResponseDto = priceService.search(LocalDateTime.parse(searchDate, dateTimeFormatter), 35455L, 1L);
+        PriceResponse priceResponse = priceService.search(LocalDateTime.parse(searchDate, dateTimeFormatter), 35455L, 1L);
 
         // Then
-        assertThat(priceResponseDto).isNotNull();
+        assertThat(priceResponse).isNotNull();
     }
 
 }
