@@ -8,7 +8,7 @@
 		{
 			"name": "POST Check offer",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -21,12 +21,8 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"applyDate\": \"2020-06-14-21.00.00\",\r\n    \"productId\": 35455,\r\n    \"brandId\": 1\r\n}"
-				},
 				"url": {
-					"raw": "localhost:8080/api/v1/prices",
+					"raw": "localhost:8080/api/v1/prices/search?date=2020-06-16-21.00.00&product=35455&brand=1",
 					"host": [
 						"localhost"
 					],
@@ -34,7 +30,22 @@
 					"path": [
 						"api",
 						"v1",
-						"prices"
+						"prices",
+						"search"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2020-06-16-21.00.00"
+						},
+						{
+							"key": "product",
+							"value": "35455"
+						},
+						{
+							"key": "brand",
+							"value": "1"
+						}
 					]
 				}
 			},

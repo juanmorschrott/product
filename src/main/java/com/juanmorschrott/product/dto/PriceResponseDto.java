@@ -1,11 +1,13 @@
 package com.juanmorschrott.product.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Builder
 @Data
 public class PriceResponseDto {
 

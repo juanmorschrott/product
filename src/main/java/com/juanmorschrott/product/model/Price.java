@@ -15,9 +15,7 @@ import java.time.LocalDateTime;
 @ToString
 public class Price {
 
-    public Price() {
-
-    }
+    public Price() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

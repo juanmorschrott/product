@@ -1,20 +1,11 @@
 package com.juanmorschrott.product.service;
 
-import com.juanmorschrott.product.dto.PriceRequestDto;
 import com.juanmorschrott.product.dto.PriceResponseDto;
-import com.juanmorschrott.product.model.Price;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public interface PriceService {
 
-    PriceResponseDto checkOffer(PriceRequestDto priceRequestDto);
+    PriceResponseDto search(LocalDateTime applyDate, Long productId, Long brandId);
 
-    List<Price> findAll();
-
-    Price findById(Long id);
-
-    Price create(Price price);
-
-    void delete(Long id);
 }
