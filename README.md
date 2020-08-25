@@ -4,7 +4,7 @@
 
 ```
 cd ./product
-docker-compose.exe up
+docker-compose up
 ```
 
 ### Run Integration Tests
