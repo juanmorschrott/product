@@ -34,6 +34,8 @@ public class PriceServiceImpl implements PriceService {
         return PriceResponse.builder()
                 .productId(price.getProductId())
                 .brandId(price.getBrandId())
+                .startDate(price.getStartDate())
+                .endDate(price.getEndDate())
                 .period(generatePeriodStr(price.getStartDate(), price.getEndDate()))
                 .price(price.getPrice())
                 .priceList(price.getPriceList())
