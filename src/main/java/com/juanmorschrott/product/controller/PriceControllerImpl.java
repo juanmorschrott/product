@@ -25,7 +25,8 @@ public class PriceControllerImpl implements PriceController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<PriceResponse> search(@RequestParam(value = "date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime applyDate,
+    public ResponseEntity<PriceResponse> search(@RequestParam(value = "date", required = true)
+                                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime applyDate,
                                                 @RequestParam(value = "product", required = true) Long productId,
                                                 @RequestParam(value = "brand", required = true) Long brandId) {
         return new ResponseEntity<>(this.priceService.search(applyDate, productId, brandId), HttpStatus.OK);
