@@ -39,7 +39,7 @@ public class PriceControllerIT {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
                 .scheme("http")
                 .host("localhost")
                 .port(port)
@@ -49,7 +49,7 @@ public class PriceControllerIT {
 
         // When
         ResponseEntity<PriceResponse> response = restTemplate.exchange(
-                builder.build().encode().toUri(),
+                uriComponentsBuilder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 PriceResponse.class);
@@ -68,8 +68,9 @@ public class PriceControllerIT {
         // Given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
                 .scheme("http")
                 .host("localhost")
                 .port(port)
@@ -77,11 +78,10 @@ public class PriceControllerIT {
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
         ResponseEntity<PriceResponse> response = restTemplate.exchange(
-                builder.build().encode().toUri(),
+                uriComponentsBuilder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 PriceResponse.class);
@@ -100,8 +100,9 @@ public class PriceControllerIT {
         // Given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
                 .scheme("http")
                 .host("localhost")
                 .port(port)
@@ -109,11 +110,10 @@ public class PriceControllerIT {
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
         ResponseEntity<PriceResponse> response = restTemplate.exchange(
-                builder.build().encode().toUri(),
+                uriComponentsBuilder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 PriceResponse.class);
@@ -132,8 +132,9 @@ public class PriceControllerIT {
         // Given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
                 .scheme("http")
                 .host("localhost")
                 .port(port)
@@ -141,11 +142,10 @@ public class PriceControllerIT {
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
         ResponseEntity<PriceResponse> response = restTemplate.exchange(
-                builder.build().encode().toUri(),
+                uriComponentsBuilder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 PriceResponse.class);
@@ -164,8 +164,9 @@ public class PriceControllerIT {
         // Given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/api/v1/prices/search")
                 .scheme("http")
                 .host("localhost")
                 .port(port)
@@ -173,11 +174,10 @@ public class PriceControllerIT {
                 .queryParam("product", "35455")
                 .queryParam("brand", "1");
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
 
         // When
         ResponseEntity<PriceResponse> response = restTemplate.exchange(
-                builder.build().encode().toUri(),
+                uriComponentsBuilder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,
                 PriceResponse.class);
