@@ -5,7 +5,6 @@ import com.juanmorschrott.product.exception.NotFoundException;
 import com.juanmorschrott.product.model.Price;
 import com.juanmorschrott.product.repository.PriceRepository;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.failBecauseExceptionWasNotThrown;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,11 +31,6 @@ public class PriceServiceTest {
     @InjectMocks
     private PriceServiceImpl priceService;
 
-    @BeforeEach
-    public void initUseCase() {
-
-    }
-
     @Test(expected = NotFoundException.class)
     public void searchShouldThrowNotFoundExceptionWhenNoValueIsReturnedTest() {
         // Given
@@ -44,10 +39,10 @@ public class PriceServiceTest {
         LocalDateTime applyDate = LocalDateTime.parse(date, dateTimeFormatter);
 
         // When
-        PriceResponse priceResponse = priceService.search(applyDate, 35455L, 1L);
+        priceService.search(applyDate, 35455L, 1L);
 
         // Then
-        assertThat(priceResponse).isNotNull();
+        failBecauseExceptionWasNotThrown(NotFoundException.class);
     }
 
     @Test
